@@ -1,10 +1,210 @@
+"use client";
+import { useRef, useState } from "react";
 import Image from "next/image";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
 import FadeIn from "@/components/ui/FadeIn";
 import { config } from "@/lib/config";
 
-export default function OurStory() {
+// ── Pulsing node on the timeline ───────────────────────────────────────────
+function TimelineNode() {
   return (
-    <section id="story" className="py-32 bg-cream">
+    <div className="relative flex items-center justify-center w-5 h-5">
+      {/* Outer pulsing ring */}
+      <motion.span
+        className="absolute inset-0 rounded-full border border-peach/50"
+        animate={{ scale: [1, 1.8], opacity: [0.6, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+      />
+      {/* Inner pulsing ring */}
+      <motion.span
+        className="absolute inset-0 rounded-full border border-peach/30"
+        animate={{ scale: [1, 2.4], opacity: [0.4, 0] }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeOut",
+          delay: 0.4,
+        }}
+      />
+      {/* Core dot with shimmer */}
+      <motion.div
+        className="w-3 h-3 rounded-full bg-peach relative overflow-hidden"
+        whileHover={{ scale: 1.3 }}
+      >
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent -skew-x-12"
+          animate={{ x: ["-100%", "200%"] }}
+          transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1.5 }}
+        />
+      </motion.div>
+    </div>
+  );
+}
+
+// ── 3D tilt + flip card ────────────────────────────────────────────────────
+function MilestoneCard({
+  item,
+  isLeft,
+}: {
+  item: (typeof config.story)[0];
+  isLeft: boolean;
+}) {
+  const [flipped, setFlipped] = useState(false);
+  const tiltRef = useRef<HTMLDivElement>(null);
+
+  // Tilt via mouse tracking (disabled while flipped to avoid confusion)
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), {
+    stiffness: 200,
+    damping: 20,
+  });
+  const tiltY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-5, 5]), {
+    stiffness: 200,
+    damping: 20,
+  });
+
+  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    if (!tiltRef.current || flipped) return;
+    const rect = tiltRef.current.getBoundingClientRect();
+    mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
+    mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
+  }
+
+  function handleMouseLeave() {
+    mouseX.set(0);
+    mouseY.set(0);
+  }
+
+  return (
+    <div
+      className={`w-5/12 ${isLeft ? "pr-10" : "pl-10"}`}
+      style={{ perspective: "900px" }}
+    >
+      {/* Tilt wrapper — Framer Motion controls rotateX + slight tiltY */}
+      <motion.div
+        ref={tiltRef}
+        style={{ rotateX, rotateY: tiltY, transformStyle: "preserve-3d" }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className="h-56 cursor-pointer"
+        onClick={() => setFlipped((f) => !f)}
+      >
+        {/* Flip container — pure CSS transition for rotateY flip */}
+        <div
+          style={{
+            transformStyle: "preserve-3d",
+            transition: "transform 0.65s cubic-bezier(0.23, 1, 0.32, 1)",
+            transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
+            width: "100%",
+            height: "100%",
+            position: "relative",
+          }}
+        >
+          {/* Front face */}
+          <div
+            className="absolute inset-0 bg-cream border border-peach/20 p-6 flex flex-col justify-center overflow-hidden"
+            style={{ backfaceVisibility: "hidden" }}
+          >
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-br from-peach/8 via-transparent to-transparent pointer-events-none"
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 1 }}
+            />
+            <p className="font-forum text-xl text-peach mb-2">{item.date}</p>
+            <h3 className="font-forum text-2xl text-dark mb-3">{item.title}</h3>
+            <p className="font-jakarta text-xs text-sage/60 tracking-wider uppercase">
+              Click to reveal →
+            </p>
+          </div>
+
+          {/* Back face */}
+          <div
+            className="absolute inset-0 overflow-hidden"
+            style={{
+              backfaceVisibility: "hidden",
+              transform: "rotateY(180deg)",
+            }}
+          >
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1185px) 40vw, 474px"
+            />
+            <div className="absolute inset-0 bg-dark/55 flex flex-col justify-end p-5">
+              <p className="font-forum text-lg text-peach mb-1">{item.date}</p>
+              <h3 className="font-forum text-xl text-cream mb-2">
+                {item.title}
+              </h3>
+              <p className="font-jakarta text-sm text-cream/80">
+                {item.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+// ── Main section ───────────────────────────────────────────────────────────
+export default function OurStory() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const timelineRef = useRef<HTMLDivElement>(null);
+
+  // Scroll-driven progress line
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 80%", "end 20%"],
+  });
+  const lineScaleY = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 20,
+  });
+
+  // Cursor-following glow
+  const glowX = useMotionValue(-200);
+  const glowY = useMotionValue(-200);
+
+  function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
+    if (!sectionRef.current) return;
+    const rect = sectionRef.current.getBoundingClientRect();
+    glowX.set(e.clientX - rect.left);
+    glowY.set(e.clientY - rect.top);
+  }
+
+  function handleMouseLeave() {
+    glowX.set(-200);
+    glowY.set(-200);
+  }
+
+  return (
+    <section
+      id="story"
+      ref={sectionRef}
+      className="py-32 bg-cream relative overflow-hidden"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* Cursor glow */}
+      <motion.div
+        className="pointer-events-none absolute w-[500px] h-[500px] rounded-full -translate-x-1/2 -translate-y-1/2"
+        style={{
+          left: glowX,
+          top: glowY,
+          background:
+            "radial-gradient(circle, rgba(250,176,120,0.12) 0%, transparent 70%)",
+        }}
+      />
+
       <div className="max-w-[1185px] mx-auto px-6">
         {/* Header */}
         <FadeIn className="text-center mb-20">
@@ -18,9 +218,20 @@ export default function OurStory() {
         </FadeIn>
 
         {/* Timeline */}
-        <div className="relative">
-          {/* Center line — hidden on mobile */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-peach/30 -translate-x-1/2 hidden md:block" />
+        <div ref={timelineRef} className="relative">
+          {/* Static track */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-peach/15 -translate-x-1/2 hidden md:block" />
+
+          {/* Scroll-driven fill */}
+          <motion.div
+            className="absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 origin-top hidden md:block"
+            style={{
+              scaleY: lineScaleY,
+              background:
+                "linear-gradient(to bottom, #FAB078, rgba(250,176,120,0.3))",
+              boxShadow: "0 0 8px 2px rgba(250,176,120,0.35)",
+            }}
+          />
 
           {config.story.map((item, i) => {
             const isLeft = i % 2 === 0;
@@ -30,48 +241,38 @@ export default function OurStory() {
                 delay={i * 0.08}
                 direction={isLeft ? "left" : "right"}
               >
-                {/* Desktop: alternating layout */}
+                {/* Desktop: flip cards with tilt */}
                 <div
-                  className={`hidden md:flex items-center mb-16 ${
+                  className={`hidden md:flex items-center mb-20 ${
                     isLeft ? "flex-row" : "flex-row-reverse"
                   }`}
                 >
+                  <MilestoneCard item={item} isLeft={isLeft} />
+
+                  {/* Center node */}
+                  <div className="w-2/12 flex justify-center">
+                    <TimelineNode />
+                  </div>
+
+                  {/* Opposite side: text summary */}
                   <div
                     className={`w-5/12 ${
-                      isLeft ? "pr-12 text-right" : "pl-12 text-left"
+                      isLeft ? "pl-10 text-left" : "pr-10 text-right"
                     }`}
                   >
-                    <p className="font-forum text-xl text-peach mb-1">
+                    <p className="font-forum text-lg text-peach mb-1">
                       {item.date}
                     </p>
-                    <h3 className="font-forum text-2xl text-dark mb-2">
+                    <h3 className="font-forum text-xl text-dark">
                       {item.title}
                     </h3>
-                    <p className="font-jakarta text-sm text-sage">
+                    <p className="font-jakarta text-sm text-sage mt-2">
                       {item.description}
                     </p>
                   </div>
-                  <div className="w-2/12 flex justify-center">
-                    <div className="w-4 h-4 rounded-full bg-peach border-2 border-cream shadow" />
-                  </div>
-                  <div className="w-5/12">
-                    <div
-                      className={`relative h-48 overflow-hidden ${
-                        isLeft ? "pl-0" : "pr-0"
-                      }`}
-                    >
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 1185px) 40vw, 474px"
-                      />
-                    </div>
-                  </div>
                 </div>
 
-                {/* Mobile: stacked layout */}
+                {/* Mobile: simple stacked */}
                 <div className="flex md:hidden flex-col mb-12 gap-4">
                   <div className="flex items-center gap-4">
                     <div className="w-3 h-3 rounded-full bg-peach flex-shrink-0" />
