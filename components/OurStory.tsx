@@ -47,18 +47,23 @@ function TimelineNode() {
   );
 }
 
-// ── 3D tilt + flip card ────────────────────────────────────────────────────
-function MilestoneCard({
+// ── Polaroid flip card ─────────────────────────────────────────────────────
+const TILTS = [-3, 2, -4, 3, -2, 4, -1]; // per-card base rotation in degrees
+
+function PolaroidCard({
   item,
   isLeft,
+  index,
 }: {
   item: (typeof config.story)[0];
   isLeft: boolean;
+  index: number;
 }) {
   const [flipped, setFlipped] = useState(false);
   const tiltRef = useRef<HTMLDivElement>(null);
+  const baseTilt = TILTS[index % TILTS.length];
 
-  // Tilt via mouse tracking (disabled while flipped to avoid confusion)
+  // Mouse-tracking tilt (disabled while flipped)
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), {
@@ -84,67 +89,99 @@ function MilestoneCard({
 
   return (
     <div
-      className={`w-5/12 ${isLeft ? "pr-10" : "pl-10"}`}
+      className={`w-5/12 flex ${isLeft ? "pr-10 justify-end" : "pl-10 justify-start"}`}
       style={{ perspective: "900px" }}
     >
-      {/* Tilt wrapper — Framer Motion controls rotateX + slight tiltY */}
+      {/* Base tilt + cursor tilt wrapper */}
       <motion.div
         ref={tiltRef}
-        style={{ rotateX, rotateY: tiltY, transformStyle: "preserve-3d" }}
+        style={{
+          rotateX,
+          rotateY: tiltY,
+          rotate: baseTilt,
+          transformStyle: "preserve-3d",
+        }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="h-56 cursor-pointer"
+        whileHover={{ rotate: 0, transition: { duration: 0.3 } }}
+        className="cursor-pointer w-[220px]"
         onClick={() => setFlipped((f) => !f)}
       >
-        {/* Flip container — pure CSS transition for rotateY flip */}
+        {/* CSS flip container */}
         <div
           style={{
             transformStyle: "preserve-3d",
-            transition: "transform 0.65s cubic-bezier(0.23, 1, 0.32, 1)",
+            transition: "transform 0.7s cubic-bezier(0.23, 1, 0.32, 1)",
             transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
-            width: "100%",
-            height: "100%",
             position: "relative",
+            width: "100%",
           }}
         >
-          {/* Front face */}
+          {/* ── FRONT FACE ── */}
           <div
-            className="absolute inset-0 bg-cream border border-peach/20 p-6 flex flex-col justify-center overflow-hidden"
-            style={{ backfaceVisibility: "hidden" }}
+            className="bg-white"
+            style={{
+              backfaceVisibility: "hidden",
+              padding: "12px 12px 40px 12px",
+              boxShadow:
+                "0 1px 2px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.10), 0 10px 30px rgba(0,0,0,0.08)",
+            }}
           >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-br from-peach/8 via-transparent to-transparent pointer-events-none"
-              initial={{ opacity: 0 }}
-              whileHover={{ opacity: 1 }}
-            />
-            <p className="font-forum text-xl text-peach mb-2">{item.date}</p>
-            <h3 className="font-forum text-2xl text-dark mb-3">{item.title}</h3>
-            <p className="font-jakarta text-xs text-sage/60 tracking-wider uppercase">
-              Click to reveal →
-            </p>
+            {/* Photo — 3:4 portrait */}
+            <div
+              className="relative w-full overflow-hidden"
+              style={{ aspectRatio: "3/4" }}
+            >
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                className="object-cover"
+                sizes="220px"
+              />
+            </div>
+            {/* Caption strip */}
+            <div className="pt-3 px-1">
+              <p className="font-dynalight text-xl text-peach leading-none mb-0.5">
+                {item.date}
+              </p>
+              <p className="font-forum text-sm text-dark leading-tight">
+                {item.title}
+              </p>
+            </div>
           </div>
 
-          {/* Back face */}
+          {/* ── BACK FACE ── */}
           <div
-            className="absolute inset-0 overflow-hidden"
+            className="bg-white absolute inset-0"
             style={{
               backfaceVisibility: "hidden",
               transform: "rotateY(180deg)",
+              padding: "12px",
+              boxShadow:
+                "0 1px 2px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.10), 0 10px 30px rgba(0,0,0,0.08)",
             }}
           >
-            <Image
-              src={item.image}
-              alt={item.title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1185px) 40vw, 474px"
-            />
-            <div className="absolute inset-0 bg-dark/55 flex flex-col justify-end p-5">
-              <p className="font-forum text-lg text-peach mb-1">{item.date}</p>
-              <h3 className="font-forum text-xl text-cream mb-2">
+            {/* Paper inner area with lined texture */}
+            <div
+              className="relative w-full h-full flex flex-col justify-center px-4 py-6 overflow-hidden"
+              style={{ backgroundColor: "#F5F0E8" }}
+            >
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  backgroundImage:
+                    "repeating-linear-gradient(transparent, transparent 27px, rgba(0,0,0,0.06) 28px)",
+                  backgroundSize: "100% 28px",
+                }}
+              />
+              <p className="font-forum text-sm text-peach mb-1 relative">
+                {item.date}
+              </p>
+              <p className="font-forum text-base text-dark mb-3 relative">
                 {item.title}
-              </h3>
-              <p className="font-jakarta text-sm text-cream/80">
+              </p>
+              <p className="font-jakarta text-sm text-dark/70 italic leading-relaxed relative">
                 {item.description}
               </p>
             </div>
@@ -247,7 +284,7 @@ export default function OurStory() {
                     isLeft ? "flex-row" : "flex-row-reverse"
                   }`}
                 >
-                  <MilestoneCard item={item} isLeft={isLeft} />
+                  <PolaroidCard item={item} isLeft={isLeft} index={i} />
 
                   {/* Center node */}
                   <div className="w-2/12 flex justify-center">
