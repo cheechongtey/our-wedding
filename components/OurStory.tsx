@@ -272,11 +272,18 @@ export default function OurStory() {
 
           {config.story.map((item, i) => {
             const isLeft = i % 2 === 0;
+            const hiddenOffset = isLeft ? -30 : 30;
             return (
-              <FadeIn
+              <motion.div
                 key={i}
-                delay={i * 0.08}
-                direction={isLeft ? "left" : "right"}
+                initial={{ opacity: 0, x: hiddenOffset }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, margin: "-80px" }}
+                transition={{
+                  duration: 0.7,
+                  delay: i * 0.08,
+                  ease: "easeOut",
+                }}
               >
                 {/* Desktop: flip cards with tilt */}
                 <div
@@ -329,7 +336,7 @@ export default function OurStory() {
                     />
                   </div>
                 </div>
-              </FadeIn>
+              </motion.div>
             );
           })}
         </div>
