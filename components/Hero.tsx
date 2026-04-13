@@ -4,7 +4,7 @@ import Image from "next/image";
 import { config } from "@/lib/config";
 
 export default function Hero() {
-  const images = [...config.heroImages, ...config.heroImages];
+  const images = config.heroImages;
 
   return (
     <section
@@ -71,15 +71,15 @@ export default function Hero() {
           {images.map((src, i) => (
             <div
               key={i}
-              className="relative h-[240px] w-[190px] sm:h-[280px] sm:w-[220px] flex-shrink-0 overflow-hidden"
+              className="relative w-[190px] sm:w-[220px] aspect-[2/3] flex-shrink-0 overflow-hidden rounded-2xl bg-peach/10"
             >
               <Image
                 src={src}
                 alt=""
                 fill
-                priority={i < 3}
-                className="object-cover"
-                sizes="220px"
+                loading="eager"
+                className="object-contain object-center"
+                sizes="(max-width: 640px) 5vw, 10vw"
               />
             </div>
           ))}

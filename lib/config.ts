@@ -200,11 +200,15 @@ export const config = {
   ],
 
   heroImages: [
-    "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80",
-    "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&q=80",
-    "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&q=80",
-    "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80",
-    "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80",
-    "https://images.unsplash.com/photo-1529636444744-adffc9135a5e?w=600&q=80",
+    "/assets/hero-image/IMG_1.jpg",
+    "/assets/hero-image/IMG_2.jpg",
+    "/assets/hero-image/IMG_3.jpg",
+    "/assets/hero-image/IMG_4.jpg",
+    "/assets/hero-image/IMG_5.jpg",
+    "/assets/hero-image/IMG_6.jpg",
+    "/assets/hero-image/IMG_7.jpg",
+    "/assets/hero-image/IMG_8.jpg",
+    "/assets/hero-image/IMG_10.jpg",
+    "/assets/hero-image/IMG_11.jpg",
   ],
 };
