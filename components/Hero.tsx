@@ -71,7 +71,7 @@ export default function Hero() {
           {images.map((src, i) => (
             <div
               key={i}
-              className="relative w-[190px] sm:w-[220px] aspect-[2/3] flex-shrink-0 overflow-hidden rounded-2xl bg-peach/10"
+              className="relative w-[190px] sm:w-[220px] aspect-2/3 shrink-0 overflow-hidden rounded-2xl bg-peach/10"
             >
               <Image
                 src={src}
@@ -79,7 +79,7 @@ export default function Hero() {
                 fill
                 loading="eager"
                 className="object-contain object-center"
-                sizes="(max-width: 640px) 5vw, 10vw"
+                sizes="(max-width: 640px) 100vw, 20vw"
               />
             </div>
           ))}
