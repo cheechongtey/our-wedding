@@ -28,9 +28,9 @@ export default function Hero() {
         transition={{ duration: 1, delay: 0.2 }}
         className="font-dynalight text-[clamp(64px,12vw,140px)] text-peach leading-none flex flex-wrap items-center justify-center gap-4 px-4 text-center"
       >
-        <span>{config.couple.bride}</span>
-        <span className="text-[clamp(32px,5vw,60px)]">💍</span>
         <span>{config.couple.groom}</span>
+        <span className="text-[clamp(32px,5vw,60px)]">💍</span>
+        <span>{config.couple.bride}</span>
       </motion.h1>
 
       {/* Date + venue */}

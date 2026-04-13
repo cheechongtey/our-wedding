@@ -1,7 +1,7 @@
 export const config = {
-  couple: { bride: "Helena", groom: "Daniel" },
-  date: "Sunday, July 15, 2024",
-  venue: "Saint Mery Church, Miami",
+  couple: { bride: "Ling Ling", groom: "Chee Chong" },
+  date: "Saturday, September 19, 2026",
+  venue: "Pekin Restaurant Sutera, Johor Bahru",
 
   story: [
     {

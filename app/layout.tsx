@@ -20,8 +20,8 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Eterna — Helena & Daniel",
-  description: "Wedding of Helena & Daniel",
+  title: "Our Wedding",
+  description: "Wedding of Chee Chong & Ling Ling",
 };
 
 export default function RootLayout({
