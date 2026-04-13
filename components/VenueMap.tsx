@@ -6,17 +6,17 @@ export default function VenueMap() {
     <section id="venue-map" className="py-32 bg-cream">
       <div className="max-w-[1185px] mx-auto px-6">
         <FadeIn className="text-center mb-12">
-          <p className="font-jakarta text-xs tracking-widest text-sage uppercase mb-4">
+          <p className="font-jakarta text-xs tracking-widest text-peach/80 uppercase mb-4">
             Location
           </p>
           <h2 className="font-forum text-[clamp(32px,5vw,67px)] text-dark">
             Dinner Venue Map
           </h2>
-          <p className="font-jakarta text-sm text-sage mt-4">{config.venue}</p>
+          <p className="font-jakarta text-sm text-dark/70 mt-4">{config.venue}</p>
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <div className="overflow-hidden rounded-sm border border-sage/20 bg-white shadow-sm">
+          <div className="overflow-hidden rounded-sm border border-peach/20 bg-dark/[0.03] shadow-sm shadow-peach/10">
             <iframe
               title="Wedding dinner venue map"
               src={config.venueMapEmbedUrl}

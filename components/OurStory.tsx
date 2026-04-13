@@ -124,7 +124,7 @@ function PolaroidCard({
               backfaceVisibility: "hidden",
               padding: "12px 12px 40px 12px",
               boxShadow:
-                "0 1px 2px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.10), 0 10px 30px rgba(0,0,0,0.08)",
+                "0 1px 2px rgba(36,24,20,0.06), 0 4px 12px rgba(144,46,34,0.08), 0 10px 30px rgba(36,24,20,0.08)",
             }}
           >
             {/* Photo — 3:4 portrait */}
@@ -159,13 +159,13 @@ function PolaroidCard({
               transform: "rotateY(180deg)",
               padding: "12px",
               boxShadow:
-                "0 1px 2px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.10), 0 10px 30px rgba(0,0,0,0.08)",
+                "0 1px 2px rgba(36,24,20,0.06), 0 4px 12px rgba(144,46,34,0.08), 0 10px 30px rgba(36,24,20,0.08)",
             }}
           >
             {/* Paper inner area with lined texture */}
             <div
               className="relative w-full h-full flex flex-col justify-center px-4 py-6 overflow-hidden"
-              style={{ backgroundColor: "#F5F0E8" }}
+              style={{ backgroundColor: "#F7EBDD" }}
             >
               <div
                 className="absolute inset-0 pointer-events-none"
@@ -238,14 +238,14 @@ export default function OurStory() {
           left: glowX,
           top: glowY,
           background:
-            "radial-gradient(circle, rgba(250,176,120,0.12) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(144,46,34,0.12) 0%, transparent 70%)",
         }}
       />
 
       <div className="max-w-[1185px] mx-auto px-6">
         {/* Header */}
         <FadeIn className="text-center mb-20">
-          <p className="font-jakarta text-xs tracking-widest text-sage uppercase mb-4">
+          <p className="font-jakarta text-xs tracking-widest text-peach/80 uppercase mb-4">
             Our Love Story
           </p>
           <h2 className="font-forum text-[clamp(32px,5vw,67px)] text-dark leading-tight">
@@ -265,8 +265,8 @@ export default function OurStory() {
             style={{
               scaleY: lineScaleY,
               background:
-                "linear-gradient(to bottom, #FAB078, rgba(250,176,120,0.3))",
-              boxShadow: "0 0 8px 2px rgba(250,176,120,0.35)",
+                "linear-gradient(to bottom, #902E22, rgba(144,46,34,0.2))",
+              boxShadow: "0 0 8px 2px rgba(144,46,34,0.18)",
             }}
           />
 
@@ -310,7 +310,7 @@ export default function OurStory() {
                     <h3 className="font-forum text-xl text-dark">
                       {item.title}
                     </h3>
-                    <p className="font-jakarta text-sm text-sage mt-2">
+                    <p className="font-jakarta text-sm text-dark/70 mt-2">
                       {item.description}
                     </p>
                   </div>
@@ -323,7 +323,7 @@ export default function OurStory() {
                     <p className="font-forum text-lg text-peach">{item.date}</p>
                   </div>
                   <h3 className="font-forum text-xl text-dark">{item.title}</h3>
-                  <p className="font-jakarta text-sm text-sage">
+                  <p className="font-jakarta text-sm text-dark/70">
                     {item.description}
                   </p>
                   <div className="relative h-48 overflow-hidden">

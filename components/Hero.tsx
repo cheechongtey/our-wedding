@@ -4,7 +4,7 @@ import Image from "next/image";
 import { config } from "@/lib/config";
 
 export default function Hero() {
-  const images = config.heroImages;
+  const images = [...config.heroImages, ...config.heroImages];
 
   return (
     <section
@@ -16,7 +16,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="font-jakarta text-sm text-sage tracking-widest mb-8"
+        className="font-jakarta text-sm text-dark/70 tracking-widest mb-8"
       >
         Please join us to celebrate
       </motion.p>
@@ -38,10 +38,10 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.5 }}
-        className="flex flex-wrap items-center justify-center gap-4 mt-8 font-jakarta text-sm text-peach tracking-wide px-4 text-center"
+        className="flex flex-wrap items-center justify-center gap-4 mt-8 font-jakarta text-sm text-dark/80 tracking-wide px-4 text-center"
       >
         <span>{config.date}</span>
-        <span className="hidden sm:block w-10 h-px bg-peach" />
+        <span className="hidden sm:block w-10 h-px bg-peach/40" />
         <span>{config.venue}</span>
       </motion.div>
 
@@ -51,7 +51,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.8 }}
-        className="mt-10 bg-sage text-cream font-jakarta text-xs tracking-[0.2em] px-10 py-4 rounded-full hover:bg-sage/80 transition-colors"
+        className="mt-10 bg-peach text-cream font-jakarta text-xs tracking-[0.2em] px-10 py-4 rounded-full hover:bg-peach/90 transition-colors"
       >
         JOIN US
       </motion.a>

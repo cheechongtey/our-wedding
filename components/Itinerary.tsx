@@ -4,10 +4,10 @@ import { config } from "@/lib/config";
 
 export default function Itinerary() {
   return (
-    <section id="itinerary" className="bg-sage py-32">
+    <section id="itinerary" className="bg-peach py-32">
       <div className="max-w-[1185px] mx-auto px-6">
         <FadeIn className="text-center mb-20">
-          <p className="font-jakarta text-xs tracking-widest text-cream/70 uppercase mb-4">
+          <p className="font-jakarta text-xs tracking-widest text-cream/80 uppercase mb-4">
             Schedule
           </p>
           <h2 className="font-forum text-[clamp(32px,5vw,67px)] text-cream">
@@ -48,13 +48,13 @@ export default function Itinerary() {
                     <h3 className="font-forum text-3xl text-cream mb-3">
                       {event.title}
                     </h3>
-                    <p className="font-jakarta text-sm text-cream/70 mb-1">
+                    <p className="font-jakarta text-sm text-cream/80 mb-1">
                       {event.date} · {event.time}
                     </p>
-                    <p className="font-jakarta text-sm text-cream/70 mb-4">
+                    <p className="font-jakarta text-sm text-cream/80 mb-4">
                       {event.location}
                     </p>
-                    <p className="font-jakarta text-sm text-cream/60 italic">
+                    <p className="font-jakarta text-sm text-cream/75 italic">
                       {event.note}
                     </p>
                     <a

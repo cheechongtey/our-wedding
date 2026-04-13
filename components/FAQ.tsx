@@ -37,7 +37,7 @@ function renderAnswerWithLinks(
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline decoration-sage/40 hover:text-peach transition-colors"
+              className="underline decoration-peach/35 underline-offset-4 hover:text-peach transition-colors"
             >
               {target}
             </a>
@@ -59,7 +59,7 @@ export default function FAQ() {
     <section className="py-32 bg-cream">
       <div className="max-w-3xl mx-auto px-6">
         <FadeIn className="text-center mb-16">
-          <p className="font-jakarta text-xs tracking-widest text-sage uppercase mb-4">
+          <p className="font-jakarta text-xs tracking-widest text-peach/80 uppercase mb-4">
             Questions
           </p>
           <h2 className="font-forum text-[clamp(32px,5vw,67px)] text-dark">
@@ -67,7 +67,7 @@ export default function FAQ() {
           </h2>
         </FadeIn>
 
-        <div className="divide-y divide-sage/20">
+        <div className="divide-y divide-peach/15">
           {config.faqs.map((item, i) => (
             <FadeIn key={i} delay={i * 0.04}>
               <div>
@@ -83,7 +83,7 @@ export default function FAQ() {
                   </span>
                 </button>
                 {open === i && (
-                  <p className="font-jakarta text-sm text-sage pb-5 leading-relaxed">
+                  <p className="font-jakarta text-sm text-dark/70 pb-5 leading-relaxed">
                     {renderAnswerWithLinks(item.a, item.links)}
                   </p>
                 )}

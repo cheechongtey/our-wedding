@@ -26,7 +26,7 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-cream/90 backdrop-blur-sm shadow-sm"
+            ? "bg-cream/90 backdrop-blur-sm shadow-sm shadow-peach/10"
             : "bg-transparent"
         }`}
       >
@@ -47,11 +47,11 @@ export default function Navbar() {
           {/* Center monogram */}
           <a
             href="#home"
-            className="flex items-center justify-center border border-sage/40 px-5 py-3"
+            className="flex items-center justify-center border border-peach/30 bg-cream/20 px-5 py-3"
           >
             <span className="font-dynalight text-2xl text-peach leading-none">
               {config.couple.groom[0]}{" "}
-              <span className="text-sm font-jakarta text-sage">&amp;</span>{" "}
+              <span className="text-sm font-jakarta text-dark/60">&amp;</span>{" "}
               {config.couple.bride[0]}
             </span>
           </a>

@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-peach: #FAB078;
-  --color-sage: #7F8D74;
-  --color-cream: #FFFCF8;
-  --color-dark: #1E201F;
+  --color-peach: #902E22;
+  --color-sage: #7A5C4D;
+  --color-cream: #FFFDED;
+  --color-dark: #241814;
 
   --font-dynalight: var(--font-dynalight);
   --font-forum: var(--font-forum);
@@ -16,7 +16,7 @@ html {
 }
 
 body {
-  background-color: #FFFCF8;
-  color: #1E201F;
+  background-color: var(--color-cream);
+  color: var(--color-dark);
   overflow-x: hidden;
 }
