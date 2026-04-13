@@ -159,10 +159,10 @@ export const config = {
     },
     {
       q: "Are there hotels nearby?",
-      a: "Yes — you can find hotels nearby the venue in here",
+      a: "Yes — there are several hotels near the venue. View nearby hotels on Google Maps.",
       links: [
         {
-          target: 'here',
+          target: 'View nearby hotels on Google Maps',
           link: 'https://www.google.com/maps/search/hotel+near+restaurant+pekin+sutera/@1.5136793,103.650489,14z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MDQwOC4wIKXMDSoASAFQAw%3D%3D'
         }
       ]
