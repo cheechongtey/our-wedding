@@ -5,7 +5,9 @@ import { config } from "@/lib/config";
 const links = [
   { label: "HOME", href: "#home" },
   { label: "OUR STORY", href: "#story" },
+  { label: "VENUE MAP", href: "#venue-map" },
   { label: "ITINERARY", href: "#itinerary" },
+  { label: "FAQ", href: "#faq" },
   { label: "RSVP", href: "#rsvp" },
 ];
 
@@ -31,7 +33,7 @@ export default function Navbar() {
         <div className="max-w-[1185px] mx-auto flex items-center justify-between px-6 py-4">
           {/* Left links — hidden on mobile */}
           <div className="hidden md:flex gap-8">
-            {links.slice(0, 2).map((l) => (
+            {links.slice(0, 3).map((l) => (
               <a
                 key={l.href}
                 href={l.href}
@@ -56,7 +58,7 @@ export default function Navbar() {
 
           {/* Right links — hidden on mobile */}
           <div className="hidden md:flex gap-8">
-            {links.slice(2).map((l) => (
+            {links.slice(3).map((l) => (
               <a
                 key={l.href}
                 href={l.href}

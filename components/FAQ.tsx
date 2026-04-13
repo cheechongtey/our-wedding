@@ -1,7 +1,56 @@
 "use client";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import FadeIn from "@/components/ui/FadeIn";
 import { config } from "@/lib/config";
+
+function renderAnswerWithLinks(
+  answer: string,
+  links?: Array<{ target: string; link: string }>
+) {
+  if (!links?.length) return answer;
+
+  let parts: ReactNode[] = [answer];
+
+  links.forEach(({ target, link }, linkIndex) => {
+    if (!target) return;
+
+    const nextParts: ReactNode[] = [];
+
+    parts.forEach((part, partIndex) => {
+      if (typeof part !== "string") {
+        nextParts.push(part);
+        return;
+      }
+
+      const chunks = part.split(target);
+      if (chunks.length === 1) {
+        nextParts.push(part);
+        return;
+      }
+
+      chunks.forEach((chunk, chunkIndex) => {
+        if (chunk) nextParts.push(chunk);
+        if (chunkIndex < chunks.length - 1) {
+          nextParts.push(
+            <a
+              key={`${linkIndex}-${partIndex}-${chunkIndex}`}
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-sage/40 hover:text-peach transition-colors"
+            >
+              {target}
+            </a>
+          );
+        }
+      });
+    });
+
+    parts = nextParts;
+  });
+
+  return parts;
+}
 
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
@@ -35,7 +84,7 @@ export default function FAQ() {
                 </button>
                 {open === i && (
                   <p className="font-jakarta text-sm text-sage pb-5 leading-relaxed">
-                    {item.a}
+                    {renderAnswerWithLinks(item.a, item.links)}
                   </p>
                 )}
               </div>

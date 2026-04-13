@@ -2,6 +2,8 @@ export const config = {
   couple: { bride: "Ling Ling", groom: "Chee Chong" },
   date: "Saturday, September 19, 2026",
   venue: "Pekin Restaurant Sutera, Johor Bahru",
+  venueMapEmbedUrl:
+    "https://www.google.com/maps?q=Pekin%20Restaurant%20Sutera%2C%20Johor%20Bahru&output=embed",
 
   story: [
     {
@@ -112,34 +114,24 @@ export const config = {
   itinerary: [
     {
       number: "01",
-      title: "Ceremony at the Church",
-      time: "4:00 PM",
-      date: "August 20, 2025",
-      location: "Saint Mery Church, Miami",
-      note: "Arrive 15–30 minutes early. Please silence your phones.",
+      title: "Cocktail & Photo Session",
+      time: "6:00 PM",
+      date: "September 19, 2026",
+      location: "Pekin Restaurant Sutera, Johor Bahru",
+      note: "Cocktail hour followed by a photo session.",
       image:
         "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80",
     },
     {
       number: "02",
-      title: "Reception Dinner",
-      time: "6:00 PM",
-      date: "August 20, 2025",
-      location: "Drewfield House",
-      note: "Cocktail hour followed by a sit-down dinner.",
+      title: "Seated Dinner",
+      time: "7:00 PM",
+      date: "September 19, 2026",
+      location: "Pekin Restaurant Sutera, Johor Bahru",
+      note: "Seated dinner with live band performance.",
       image:
         "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
-    },
-    {
-      number: "03",
-      title: "Dancing & Fireworks",
-      time: "8:00 PM",
-      date: "August 20, 2025",
-      location: "Drewfield House Garden",
-      note: "Dance the night away under the stars.",
-      image:
-        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
-    },
+    }
   ],
 
   dressCode: [
@@ -163,39 +155,35 @@ export const config = {
   faqs: [
     {
       q: "What is the date and time of the wedding?",
-      a: "July 15, 2024 — the ceremony begins at 4:00 PM.",
+      a: "September 19, 2026 — the wedding ceremony begins with cocktail hour at 6:00 PM. followed by seated dinner at 7:00 PM.",
     },
     {
       q: "Are there hotels nearby?",
-      a: "Yes — Chateau Hotel is offering a discount for our guests. Mention our names when booking.",
+      a: "Yes — you can find hotels nearby the venue in here",
+      links: [
+        {
+          target: 'here',
+          link: 'https://www.google.com/maps/search/hotel+near+restaurant+pekin+sutera/@1.5136793,103.650489,14z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MDQwOC4wIKXMDSoASAFQAw%3D%3D'
+        }
+      ]
     },
     {
       q: "Where is the venue located?",
-      a: "Saint Mery Church, Miami. You'll find the address in the itinerary section above.",
+      a: "Pekin Restaurant Sutera, Johor Bahru.",
+      links: [
+        {
+          target: 'Pekin Restaurant Sutera, Johor Bahru',
+          link: 'https://www.google.com/maps/search/hotel+near+restaurant+pekin+sutera/@1.5136793,103.650489,14z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MDQwOC4wIKXMDSoASAFQAw%3D%3D'
+        }
+      ]
     },
     {
       q: "What time should we arrive?",
-      a: "Please arrive 15–30 minutes before the ceremony begins.",
-    },
-    {
-      q: "Will the ceremony and reception be outdoors?",
-      a: "The ceremony is indoors. The reception dinner and fireworks celebration are outdoors.",
-    },
-    {
-      q: "Can we bring gifts to the wedding?",
-      a: "Your presence is the greatest gift. A gift table will be available at the reception if you'd like to bring something.",
-    },
-    {
-      q: "Are children allowed?",
-      a: "Children are welcome at the ceremony. The evening reception is adults-only.",
+      a: "Please arrive 30 minutes before the dinner begins.",
     },
     {
       q: "What about parking?",
-      a: "Free parking is available at the church and at the reception venue.",
-    },
-    {
-      q: "What is the photography policy?",
-      a: "Please enjoy an unplugged ceremony. Our professional photographer will capture every moment.",
+      a: "Free parking is available at the venue at first come first serve basis. Please follow the instructions from the venue staff.",
     },
   ],
 
