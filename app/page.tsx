@@ -12,10 +12,10 @@ export default function Page() {
       <Navbar />
       <Hero />
       <OurStory />
-      <VenueMap />
       <Itinerary />
       <FAQ />
       <RSVP />
+      <VenueMap />
     </>
   );
 }

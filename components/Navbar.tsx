@@ -5,10 +5,10 @@ import { config } from "@/lib/config";
 const links = [
   { label: "HOME", href: "#home" },
   { label: "OUR STORY", href: "#story" },
-  { label: "VENUE MAP", href: "#venue-map" },
   { label: "ITINERARY", href: "#itinerary" },
   { label: "FAQ", href: "#faq" },
   { label: "RSVP", href: "#rsvp" },
+  { label: "VENUE MAP", href: "#venue-map" },
 ];
 
 export default function Navbar() {

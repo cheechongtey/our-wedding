@@ -189,10 +189,8 @@ export const config = {
 
   heroImages: [
     "/assets/hero-image/IMG_1.jpg",
-    "/assets/hero-image/IMG_2.jpg",
     "/assets/hero-image/IMG_3.jpg",
     "/assets/hero-image/IMG_4.jpg",
-    "/assets/hero-image/IMG_5.jpg",
     "/assets/hero-image/IMG_6.jpg",
     "/assets/hero-image/IMG_7.jpg",
     "/assets/hero-image/IMG_8.jpg",
