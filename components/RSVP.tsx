@@ -152,7 +152,7 @@ export default function RSVP() {
             Be Our Special Guest
           </h2>
           <p className="font-jakarta text-sm text-cream/80 mt-3">
-            Your kind response is requested by August 20th, 2024
+            Your kind response is requested by June 10th, 2026
           </p>
         </FadeIn>
 
@@ -286,11 +286,6 @@ export default function RSVP() {
             </form>
           </FadeIn>
         )}
-
-        <p className="text-center font-jakarta text-xs text-cream/40 mt-12">
-          © 2025 {config.couple.bride} &amp; {config.couple.groom}. All rights
-          reserved. Website designed with love by us.
-        </p>
       </div>
     </section>
   );
