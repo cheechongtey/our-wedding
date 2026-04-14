@@ -78,7 +78,7 @@ const schema = z
 
 type FormValues = z.infer<typeof schema>;
 
-const fieldError = "font-jakarta text-xs text-red-300 mt-1";
+const fieldError = "font-jakarta text-xs text-white mt-1";
 const labelClass = "block font-jakarta text-xs text-cream/80 mb-1 tracking-wider";
 
 export default function RSVP() {
@@ -271,7 +271,7 @@ export default function RSVP() {
               </div>
 
               {submitError && (
-                <p className="font-jakarta text-xs text-red-300 text-center">
+                <p className="font-jakarta text-xs text-rose-200 text-center">
                   {submitError}
                 </p>
               )}
