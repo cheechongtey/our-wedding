@@ -227,7 +227,7 @@ export default function OurStory() {
     <section
       id="story"
       ref={sectionRef}
-      className="py-32 bg-cream relative overflow-hidden"
+      className="py-32  relative overflow-hidden"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >

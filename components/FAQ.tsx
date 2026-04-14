@@ -56,7 +56,7 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="py-32 bg-cream">
+    <section className="py-32 ">
       <div className="max-w-3xl mx-auto px-6">
         <FadeIn className="text-center mb-16">
           <p className="font-jakarta text-xs tracking-widest text-peach/80 uppercase mb-4">

@@ -7,53 +7,18 @@ export const config = {
 
   story: [
     {
-      date: "07-02-2015",
-      title: "Met & Fell in Love",
-      description: "We met at a music festival and knew instantly.",
+      date: "08-06-2018",
+      title: "We met through an event in KL",
+      description: "We met through an event in KL and knew instantly.",
       image:
         "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80",
     },
-    {
-      date: "21-03-2015",
-      title: "Our First Date",
-      description: "A quiet dinner that lasted until midnight.",
+    { 
+      date: "19-01-2025",
+      title: "Our first home signing together",
+      description: "We signed our first home together and started our new chapter together.",
       image:
-        "https://images.unsplash.com/photo-1529636444744-adffc9135a5e?w=800&q=80",
-    },
-    {
-      date: "19-08-2016",
-      title: "We Got Engaged",
-      description: "He proposed under the stars.",
-      image:
-        "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800&q=80",
-    },
-    {
-      date: "24-12-2017",
-      title: "Our First Home",
-      description: "We moved into our cozy apartment.",
-      image:
-        "https://images.unsplash.com/photo-1449844908441-8829872d2607?w=800&q=80",
-    },
-    {
-      date: "14-02-2018",
-      title: "We Got Miles",
-      description: "Our golden retriever joined the family.",
-      image:
-        "https://images.unsplash.com/photo-1552053831-71594a27632d?w=800&q=80",
-    },
-    {
-      date: "21-03-2019",
-      title: "Sophie Was Born",
-      description: "Our greatest adventure began.",
-      image:
-        "https://images.unsplash.com/photo-1492725764893-90b379c2b6e7?w=800&q=80",
-    },
-    {
-      date: "07-02-2025",
-      title: "New Chapter",
-      description: 'And now we say "I do."',
-      image:
-        "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80",
+        "/assets/our-story/home-signing.jpg",
     },
   ],
 
