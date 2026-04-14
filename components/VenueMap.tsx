@@ -3,7 +3,7 @@ import { config } from "@/lib/config";
 
 export default function VenueMap() {
   return (
-    <section id="venue-map" className="py-32 bg-cream">
+    <section id="venue-map" className="py-32 ">
       <div className="max-w-[1185px] mx-auto px-6">
         <FadeIn className="text-center mb-12">
           <p className="font-jakarta text-xs tracking-widest text-peach/80 uppercase mb-4">

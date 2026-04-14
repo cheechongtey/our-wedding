@@ -227,7 +227,7 @@ export default function OurStory() {
     <section
       id="story"
       ref={sectionRef}
-      className="py-32 bg-cream relative overflow-hidden"
+      className="py-32  relative overflow-hidden"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
@@ -249,7 +249,7 @@ export default function OurStory() {
             Our Love Story
           </p>
           <h2 className="font-forum text-[clamp(32px,5vw,67px)] text-dark leading-tight">
-            Our love started at a music festival,
+            Our love started at an event in KL,
             <br className="hidden sm:block" /> here&apos;s our story
           </h2>
         </FadeIn>

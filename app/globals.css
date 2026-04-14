@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-peach: #902E22;
+  --color-peach: #953529;
   --color-sage: #7A5C4D;
-  --color-cream: #FFFDED;
+  --color-cream: #F3F0E6;
   --color-dark: #241814;
 
   --font-dynalight: var(--font-dynalight);
@@ -17,6 +17,9 @@ html {
 
 body {
   background-color: var(--color-cream);
+  background-image: url('/cream-canvas-texture.jpg');
+  background-repeat: repeat;
+  background-size: 600px 600px;
   color: var(--color-dark);
   overflow-x: hidden;
 }

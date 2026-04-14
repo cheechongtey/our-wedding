@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen bg-cream flex flex-col items-center justify-center pt-24 pb-0"
+      className="min-h-screen flex flex-col items-center justify-center pt-[130px] pb-0"
     >
       {/* Tagline */}
       <motion.p
