@@ -13,12 +13,40 @@ export const config = {
       image:
         "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80",
     },
-    { 
+    {
+      date: "28-04-2024",
+      title: "Bali Trip",
+      description: "Another long-overdue escape together — sun, rice fields, and good food. We needed this.",
+      image:
+        "/assets/our-story/bali-trip.jpg",
+    },
+    {
       date: "19-01-2025",
       title: "Our first home signing together",
       description: "We signed our first home together and started our new chapter together.",
       image:
-        "/assets/our-story/home-signing.jpg",
+        "/assets/our-story/house-signing.jpg",
+    },
+    {
+      date: "24-03-2025",
+      title: "Sabah Trip",
+      description: "We went to Sabah for a long lost trip.",
+      image:
+        "/assets/our-story/sabah-trip.jpg",
+    },
+    {
+      date: "13-10-2025",
+      title: "Making It Official",
+      description: "Paperwork, queues, and signatures — not exactly romantic, but it's the day we made it real.",
+      image:
+        "/assets/our-story/kahwin-paperwork.jpeg",
+    },
+    {
+      date: "15-01-2026",
+      title: "Pre-Wedding Shoot — Behind The Scenes",
+      description: "Stolen moments between shots — just the two of us, unbothered.",
+      image:
+        "/assets/our-story/pre-wedding-shoot.jpg",
     },
   ],
 
