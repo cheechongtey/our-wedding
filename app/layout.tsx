@@ -23,6 +23,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
   ),
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+  },
   title: "Chee Chong & Ling Ling — Wedding, 19 September 2026 | Pekin Restaurant Sutera, JB",
   description:
     "Join us on September 19, 2026 at Pekin Restaurant Sutera, Johor Bahru for the wedding of Chee Chong & Ling Ling.",
