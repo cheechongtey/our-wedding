@@ -76,7 +76,7 @@ The component and API route both check for an empty `playlistId` and render noth
 - Accent / waveform bars: `#953529` (peach)
 - Border radius: `rounded-2xl`
 - Shadow: `shadow-xl`
-- Width: `320px` fixed
+- Width: `w-[calc(100vw-2rem)]` on mobile, `w-80` (320px) on sm+ screens (`sm:w-80`)
 - Font: existing site fonts (Jakarta for labels)
 
 ---
