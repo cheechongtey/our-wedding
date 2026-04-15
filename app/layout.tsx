@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Dynalight, Forum, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import SpotifyPlayer from "@/components/SpotifyPlayer";
 
 const dynalight = Dynalight({
   weight: "400",
@@ -68,7 +69,10 @@ export default function RootLayout({
       lang="en"
       className={`${dynalight.variable} ${forum.variable} ${jakarta.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <SpotifyPlayer />
+      </body>
     </html>
   );
 }
