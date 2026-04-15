@@ -190,4 +190,8 @@ export const config = {
     "/assets/hero-image/IMG_10.jpg",
     "/assets/hero-image/IMG_11.jpg",
   ],
+
+  spotify: {
+    playlistId: "", // Replace with your Spotify playlist ID, e.g. "37i9dQZF1DXcBWIGoYBM5M"
+  },
 };
