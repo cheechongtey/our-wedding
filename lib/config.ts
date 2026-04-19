@@ -1,5 +1,9 @@
 export const config = {
   couple: { bride: "Ling Ling", groom: "Chee Chong" },
+  fullName: {
+    bride: "Jennifer Lau Ling Ling",
+    groom: "Tey Chee Chong"
+  },
   date: "Saturday, September 19, 2026",
   venue: "Pekin Restaurant Sutera, Johor Bahru",
   venueMapEmbedUrl:
@@ -47,6 +51,13 @@ export const config = {
       description: "Stolen moments between shots — just the two of us, unbothered.",
       image:
         "/assets/our-story/pre-wedding-shoot.jpg",
+    },
+    {
+      date: "19-09-2026",
+      title: "Our actual day",
+      description:
+        "Twilight on the shore, sparks behind us, and a moment that felt like the whole day slowed down — just us, the sea, and the start of forever.",
+      image: "/assets/our-story/actual-day.jpg",
     },
   ],
 

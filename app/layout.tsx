@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Dynalight, Forum, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import SoundCloudPlayer from "@/components/SoundCloudPlayer";
+import Preloader from "@/components/Preloader";
 
 const dynalight = Dynalight({
   weight: "400",
@@ -70,6 +71,7 @@ export default function RootLayout({
       className={`${dynalight.variable} ${forum.variable} ${jakarta.variable}`}
     >
       <body>
+        <Preloader />
         {children}
         <SoundCloudPlayer />
       </body>

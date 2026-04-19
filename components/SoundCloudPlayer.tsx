@@ -91,6 +91,13 @@ export default function SoundCloudPlayer() {
       .catch(() => {});
   }, []);
 
+  // Trigger play from preloader CTA
+  useEffect(() => {
+    const onWeddingPlay = () => widgetRef.current?.play();
+    document.addEventListener("wedding:play", onWeddingPlay);
+    return () => document.removeEventListener("wedding:play", onWeddingPlay);
+  }, []);
+
   // Load SC Widget API once iframe is mounted
   useEffect(() => {
     if (!meta || !iframeRef.current) return;

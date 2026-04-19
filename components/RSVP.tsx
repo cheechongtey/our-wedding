@@ -48,6 +48,9 @@ const schema = z
     vegetarian: z.enum(["Yes", "No"], {
       error: "Please select a dietary preference.",
     }),
+    guestOf: z.enum(["groom", "bride"], {
+      error: "Please select whose guest you are.",
+    }),
   })
   .superRefine(({ dialCode, phone }, ctx) => {
     // Skip if phone already failed the base regex check
@@ -109,6 +112,7 @@ export default function RSVP() {
       guests: values.guests,
       attending: values.attending,
       vegetarian: values.vegetarian,
+      guestOf: values.guestOf,
     };
 
     try {
@@ -222,6 +226,37 @@ export default function RSVP() {
                   {...register("guests")}
                 />
                 <ErrorMessage errors={errors} name="guests" render={({ message }) => <p className={fieldError}>{message}</p>} />
+              </div>
+
+              {/* Guest of */}
+              <div>
+                <label className={labelClass} htmlFor="guest-of-select">
+                  Guest of
+                </label>
+                <Controller
+                  control={control}
+                  name="guestOf"
+                  render={({ field }) => (
+                    <Select value={field.value} onValueChange={field.onChange}>
+                      <SelectTrigger id="guest-of-select" className="w-full">
+                        <SelectValue placeholder="Select groom or bride" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="groom">
+                          Groom ({config.couple.groom})
+                        </SelectItem>
+                        <SelectItem value="bride">
+                          Bride ({config.couple.bride})
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
+                <ErrorMessage
+                  errors={errors}
+                  name="guestOf"
+                  render={({ message }) => <p className={fieldError}>{message}</p>}
+                />
               </div>
 
               {/* Attending */}

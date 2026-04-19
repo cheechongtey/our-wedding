@@ -7,8 +7,13 @@ export async function POST(req: NextRequest) {
   const dbId = process.env.NOTION_RSVP_DB_ID;
 
   if (!process.env.NOTION_TOKEN || !dbId) {
+    const missing: string[] = [];
+    if (!process.env.NOTION_TOKEN) missing.push("NOTION_TOKEN");
+    if (!dbId) missing.push("NOTION_RSVP_DB_ID");
     return NextResponse.json(
-      { error: "Notion integration is not configured." },
+      {
+        error: `Notion integration is not configured. Missing: ${missing.join(", ")}. Add them to .env.local for local dev, or to your host (e.g. Vercel → Project → Settings → Environment Variables).`,
+      },
       { status: 500 }
     );
   }
@@ -20,6 +25,7 @@ export async function POST(req: NextRequest) {
     guests: string;
     attending: "Yes" | "No";
     vegetarian: "Yes" | "No";
+    guestOf: "groom" | "bride";
   };
 
   try {
@@ -28,9 +34,18 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const { name, email, phone, guests, attending, vegetarian } = body;
+  const { name, email, phone, guests, attending, vegetarian, guestOf } = body;
 
-  if (!name || !email || !phone || !guests || !attending || !vegetarian) {
+  if (
+    !name ||
+    !email ||
+    !phone ||
+    !guests ||
+    !attending ||
+    !vegetarian ||
+    !guestOf ||
+    (guestOf !== "groom" && guestOf !== "bride")
+  ) {
     return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
   }
 
@@ -99,6 +114,9 @@ export async function POST(req: NextRequest) {
         },
         Vegetarian: {
           checkbox: vegetarian === "Yes",
+        },
+        "Guest of": {
+          select: { name: guestOf === "groom" ? "Groom" : "Bride" },
         },
       },
     });
