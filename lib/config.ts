@@ -6,6 +6,7 @@ export const config = {
   },
   date: "Saturday, September 19, 2026",
   venue: "Pekin Restaurant Sutera, Johor Bahru",
+  hashtag: "#DeTeyLingOurStory",
   venueMapEmbedUrl:
     "https://www.google.com/maps?q=Pekin%20Restaurant%20Sutera%2C%20Johor%20Bahru&output=embed",
 

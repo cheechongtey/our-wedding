@@ -45,6 +45,16 @@ export default function Hero() {
         <span>{config.venue}</span>
       </motion.div>
 
+      {/* Hashtag */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.65 }}
+        className="mt-4 font-forum italic text-xs text-sage/80 tracking-[0.15em]"
+      >
+        {config.hashtag}
+      </motion.p>
+
       {/* CTA */}
       <motion.a
         href="#rsvp"

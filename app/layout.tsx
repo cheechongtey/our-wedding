@@ -31,14 +31,14 @@ export const metadata: Metadata = {
   },
   title: "Chee Chong & Ling Ling — Wedding, 19 September 2026 | Pekin Restaurant Sutera, JB",
   description:
-    "Join us on September 19, 2026 at Pekin Restaurant Sutera, Johor Bahru for the wedding of Chee Chong & Ling Ling.",
+    "Join us on September 19, 2026 at Pekin Restaurant Sutera, Johor Bahru for the wedding of Chee Chong & Ling Ling. #DeTeyLingOurStory",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Chee Chong & Ling Ling — You're Invited",
     description:
-      "Join us on September 19, 2026 at Pekin Restaurant Sutera, Johor Bahru.",
+      "Join us on September 19, 2026 at Pekin Restaurant Sutera, Johor Bahru. #DeTeyLingOurStory",
     url: "/",
     siteName: "Chee Chong & Ling Ling Wedding",
     images: [
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Chee Chong & Ling Ling — You're Invited",
     description:
-      "Join us on September 19, 2026 at Pekin Restaurant Sutera, Johor Bahru.",
+      "Join us on September 19, 2026 at Pekin Restaurant Sutera, Johor Bahru. #DeTeyLingOurStory",
     images: ["/og-image.jpg"],
   },
 };

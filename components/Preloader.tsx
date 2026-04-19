@@ -218,13 +218,26 @@ export default function Preloader() {
               Johor Bahru
             </motion.p>
 
+            <motion.p
+              className="mt-3 font-[family-name:var(--font-forum)] italic text-[10px] sm:text-[11px]"
+              style={{
+                color: "var(--color-sage)",
+                letterSpacing: "0.15em",
+              }}
+              initial={reduce ? false : { opacity: 0 }}
+              animate={{ opacity: 0.75 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.72 }}
+            >
+              {config.hashtag}
+            </motion.p>
+
             {/* Progress hairline */}
             <motion.div
               className="mt-10 h-px w-[120px] overflow-hidden"
               style={{ backgroundColor: "rgba(36, 24, 20, 0.12)" }}
               initial={reduce ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, ease: "easeOut", delay: 0.72 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.82 }}
               role="progressbar"
               aria-label="Loading wedding site"
               aria-valuemin={0}
