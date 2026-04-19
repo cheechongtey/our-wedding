@@ -191,7 +191,7 @@ export const config = {
     "/assets/hero-image/IMG_11.jpg",
   ],
 
-  spotify: {
-    playlistId: "", // Replace with your Spotify playlist ID, e.g. "37i9dQZF1DXcBWIGoYBM5M"
+  soundcloud: {
+    playlistUrl: "https://soundcloud.com/chee-chong-414856628/sets/wedding-playlist",
   },
 };

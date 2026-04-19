@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Dynalight, Forum, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import SpotifyPlayer from "@/components/SpotifyPlayer";
+import SoundCloudPlayer from "@/components/SoundCloudPlayer";
 
 const dynalight = Dynalight({
   weight: "400",
@@ -71,7 +71,7 @@ export default function RootLayout({
     >
       <body>
         {children}
-        <SpotifyPlayer />
+        <SoundCloudPlayer />
       </body>
     </html>
   );
