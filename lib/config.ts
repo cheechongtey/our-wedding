@@ -190,4 +190,8 @@ export const config = {
     "/assets/hero-image/IMG_10.jpg",
     "/assets/hero-image/IMG_11.jpg",
   ],
+
+  soundcloud: {
+    playlistUrl: "https://soundcloud.com/chee-chong-414856628/sets/wedding-playlist",
+  },
 };
